@@ -227,7 +227,7 @@ app.get("/cookietest", (req, res) => {
   res.json(req.cookies);
 })
 
-// get /logout to clear our cookie
+// GET /logout to clear our cookie
 app.get("/logout", (req, res) => {
   res.clearCookie("token");
   res.json({ message: "You have been logged out" });
