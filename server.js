@@ -81,13 +81,23 @@ async function authCheck(req, res, next){
 // Middleware
 //////////////////////////////
 // cors for preventing cors errors (allows all requests from other origins)
+if (process.env.NODE_ENV === "production"){
+    app.use(
+        cors({
+          origin: "http://localhost:3000",
+          credentials: true,
+        })
+      );
+}else{
+    app.use(
+        cors({
+          origin: "http://localhost:3000",
+          credentials: true,
+        })
+      );
+}
 // app.use(cors());
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+
 // morgan for logging requests
 app.use(morgan("dev"));
 // express functionality to recognize incoming request objects as JSON objects
@@ -201,20 +211,37 @@ app.post("/login", async (req, res) => {
     const token = jwt.sign({ username: user.username }, process.env.SECRET);
     // send a response with a cooke that includes the token
     // res.cookie("token", token);
-    res.cookie("token", token, {
-      // can only be accessed by server requests
-      httpOnly: true,
-      // path = where the cookie is valid
-      path: "/",
-      // domain = what domain the cookie is valid on
-      domain: "localhost",
-      // secure = only send cookie over https
-      secure: false,
-      // sameSite = only send cookie if the request is coming from the same origin
-      sameSite: "lax", // "strict" | "lax" | "none" (secure must be true)
-      // maxAge = how long the cookie is valid for in milliseconds
-      maxAge: 3600000, // 1 hour
-    });
+    if(process.env.NODE_ENV === "production"){
+        res.cookie("token", token, {
+            // can only be accessed by server requests
+            httpOnly: true,
+            // path = where the cookie is valid
+            path: "/",
+            // domain = what domain the cookie is valid on
+            domain: "localhost",
+            // secure = only send cookie over https
+            secure: true,
+            // sameSite = only send cookie if the request is coming from the same origin
+            sameSite: "none", // "strict" | "lax" | "none" (secure must be true)
+            // maxAge = how long the cookie is valid for in milliseconds
+            maxAge: 3600000, // 1 hour
+          });
+    }else{
+        res.cookie("token", token, {
+            // can only be accessed by server requests
+            httpOnly: true,
+            // path = where the cookie is valid
+            path: "/",
+            // domain = what domain the cookie is valid on
+            domain: "localhost",
+            // secure = only send cookie over https
+            secure: false,
+            // sameSite = only send cookie if the request is coming from the same origin
+            sameSite: "lax", // "strict" | "lax" | "none" (secure must be true)
+            // maxAge = how long the cookie is valid for in milliseconds
+            maxAge: 3600000, // 1 hour
+          });
+    }
     // send the user as json
     res.json(user);
   } catch (error) {
