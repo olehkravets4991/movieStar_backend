@@ -50,10 +50,10 @@ const User = mongoose.model("User", UserSchema);
 
 
 const moviesSchema = new mongoose.Schema({
-  Title: String,
-  Poster: String,
-  Genres: String,
-  ReleaseDate: String,
+  title: String,
+  poster: String,
+  genres: String,
+  releaseDate: String,
   username: String
 });
 
