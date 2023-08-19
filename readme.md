@@ -11,8 +11,6 @@
 
 The Movie Star app allows you to save your favorite movies in your account with information such as title, year released, poster image, and your own rating of the  movie. 
 
-
-
 ## Routes
 
 | ENDPOINT | METHOD | PURPOSE |
