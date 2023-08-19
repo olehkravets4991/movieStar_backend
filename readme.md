@@ -9,13 +9,8 @@
 
 ## Description
 
-loren ipsum
+The Movie Star app allows you to save your favorite movies in your account with information such as title, year released, poster image, and your own rating of the  movie. 
 
-## Mock UP of UI
-
-| Index                         | Movies                          | 
-| ----------------------------------- | ----------------------------------- | 
-| ![index](/public/images/index.png) | ![movies](/public/images/movies.png) | !
 
 
 ## Routes
@@ -35,6 +30,5 @@ loren ipsum
 
 ## ERD (ENTITY RELATIONSHIP DIAGRAM)
 
-![PICTURE OF ERD](/public/images/ERDv1.png)
-
+![ERD](/public/images/ERD.png)
 - [Free ERD Diagram Tool](https://dbdiagram.io/home)
