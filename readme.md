@@ -26,7 +26,7 @@ The Movie Star app allows you to save your favorite movies in your account with 
 | /movies/:id | GET | update one movie |
 | /signup | POST | new user sign up page |
 | /login | POST | login page |
-| /logout | GET | logout page, redirect to / |
+| /logout | GET | logout page, redirect to the landing page |
 
 ## ERD (ENTITY RELATIONSHIP DIAGRAM)
 
