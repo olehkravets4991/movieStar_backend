@@ -84,7 +84,7 @@ async function authCheck(req, res, next){
 if (process.env.NODE_ENV === "production"){
     app.use(
         cors({
-          origin: "http://localhost:3000",
+          origin: "https://movie-star-frontend.onrender.com",
           credentials: true,
         })
       );
@@ -218,7 +218,7 @@ app.post("/login", async (req, res) => {
             // path = where the cookie is valid
             path: "/",
             // domain = what domain the cookie is valid on
-            domain: "localhost",
+            // domain: " ",
             // secure = only send cookie over https
             secure: true,
             // sameSite = only send cookie if the request is coming from the same origin
